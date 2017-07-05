@@ -1,0 +1,19 @@
+  0x000: 308000000000 | 	irmovl $0, %eax #j = 0
+  0x006: 308200000000 | 	irmovl $0, %edx #k = 0
+  0x00c: 308100000000 | 	irmovl $0, %ecx #i = 0
+  0x012: 308301000000 | 	irmovl $1, %ebx #constant 1
+  0x018: 308604000000 | 	irmovl $4, %esi #constant 5
+  0x01e:              | Loop:
+  0x01e: 308000000000 | 	irmovl $0, %eax #reset j
+  0x024: 6010         | 	addl %ecx, %eax #j+i
+  0x026: 6010         | 	addl %ecx, %eax #j+i
+  0x028: 2002         | 	rrmovl %eax, %edx # j->k
+  0x02a: 6032         | 	addl %ebx, %edx #k+1
+  0x02c: 2017         | 	rrmovl %ecx, %edi
+  0x02e: 6031         | 	addl %ebx, %ecx #i++
+  0x030: 6167         | 	subl %esi, %edi	#i-4
+  0x032: 741e000000   | 	jne Loop #when not equal to 0
+  0x037: 703c000000   | 	jmp Done
+  0x03c:              | Done:
+  0x03c: 10           | 	halt
+                      | 	

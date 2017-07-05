@@ -1,0 +1,20 @@
+	irmovl $0, %eax #j = 0
+	irmovl $0, %edx #k = 0
+	irmovl $0, %ecx #i = 0
+	irmovl $1, %ebx #constant 1
+	irmovl $4, %esi #constant 4
+Loop:
+	irmovl $0, %eax #reset j
+	addl %ecx, %eax #j+i
+	addl %ecx, %eax #j+i
+	rrmovl %eax, %edx # j->k
+	addl %ebx, %edx #k+1
+	rrmovl %ecx, %edi
+	addl %ebx, %ecx #i++
+	subl %esi, %edi	#i-4
+	jne Loop #when not equal to 0
+	jmp Done
+Done:
+	halt
+	
+	https://xsznix.github.io/js-y86/

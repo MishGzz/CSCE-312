@@ -1,0 +1,18 @@
+	
+	irmovl $5, %eax #i = 5
+	irmovl $6, %edx #j = 4
+	rrmovl %edx, %ecx
+	subl %eax, %ecx #int temp j-i
+	jge Else
+	irmovl $5, %ecx
+	addl %ecx, %eax
+	jmp End
+Else:
+	irmovl $0, %eax #i = 0
+	irmovl $1, %ecx
+	addl %ecx, %edx #j++ 
+End:
+	andl %ecx, %ecx
+	halt
+	
+	
